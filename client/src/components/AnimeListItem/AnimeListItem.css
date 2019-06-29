@@ -1,0 +1,9 @@
+.card {
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  margin-bottom: 25px;
+}
+.card-body {
+  background-color: white;
+}

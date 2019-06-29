@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+}
+
+.navbar {
+  background-color: maroon;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.navbar-brand {
+  font-family: 'Sriracha', cursive;
+  font-size: 30px;
+}
+
+.tagline {
+  font-weight: initial;
+  font-size: 15px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.tagline::before {
+  content: " ";
+  display: block;
+  margin-top: -28px;
+}
+
+.btn-maroon {
+  background-color: maroon;
+  color: white;
+}
+
+.btn-maroon:hover {
+  color: white;
+  opacity: .8;
+}
+
+.text-orange {
+  color: orange;
+}

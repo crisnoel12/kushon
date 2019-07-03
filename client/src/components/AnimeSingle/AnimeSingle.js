@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
 import { transformDate } from '../../utilities';
 import { getAnimeQuery } from '../../queries/animeQueries';
@@ -10,6 +9,10 @@ const AnimeSingle = (props) => {
   let { id } = props.match.params;
   id = parseInt(id);
 
+  const goBack = () => {
+    props.history.goBack();
+  }
+
   return (
     <Query query={getAnimeQuery} variables={{ id }}>
       {({ loading, error, data }) => {       
@@ -17,11 +20,13 @@ const AnimeSingle = (props) => {
         if (error) console.log(error);
 
         const {
-          attributes: {synopsis,canonicalTitle,startDate,endDate,ageRating,posterImage:{tiny},coverImage:{large},showType}
+          attributes: {synopsis,canonicalTitle,startDate,endDate,ageRating,posterImage:{tiny},showType}
         } = data.anime;
 
         const styles = {
-              'background': `url(${large}) center no-repeat`,
+              'backgroundImage': (data.anime.attributes.coverImage) ? `url(${data.anime.attributes.coverImage.large})` : null,
+              'backgroundPosition': 'center',
+              'backgroundRepeat': 'no-repeat',
               'backgroundSize': 'cover',
               'height': '260px',
               'backgroundBlendMode': 'overlay',
@@ -46,7 +51,7 @@ const AnimeSingle = (props) => {
                   From: <span className="badge badge-success">{transformDate(startDate)}</span><br/>
                   To: <span className="badge badge-danger">{transformDate(endDate)}</span><br/>
                   <hr/>
-                  <Link to="/" className="d-block">&larr; Go Back</Link>
+                  <button onClick={() => goBack()} className="btn btn-outline-danger btn-sm text-center">&larr; Go Back</button>
                 </div>
               </div>
               <div className="col-md-8 pl-0">

@@ -11,11 +11,7 @@ const getAnimesQuery = gql`
         endDate
         ageRating
         posterImage {
-          tiny
           small
-          medium
-          large
-          original
         }
         showType
       }
@@ -35,16 +31,9 @@ const getAnimeQuery = gql`
         ageRating
         posterImage {
           tiny
-          small
-          medium
-          large
-          original
         }
         coverImage {
-          tiny
-          small
           large
-          original
         }
         showType
       }
